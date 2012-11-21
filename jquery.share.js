@@ -23,7 +23,7 @@
                     orientation = this.share.settings.orientation,
                     affix = this.share.settings.affix,
                     margin = this.share.settings.margin,
-                    pageTitle = $(document).attr('title'),
+                    pageTitle = this.share.settings.title||$(document).attr('title'),
                     pageUrl = this.share.settings.urlToShare||$(location).attr('href'),
                     pageDesc = "";
                 
@@ -35,15 +35,15 @@
                 return this.each(function() {
                     var $element = $(this),
                         id=$element.attr("id"),
-                        u=pageUrl,
-                        t=pageTitle,
+                        u=encodeURIComponent(pageUrl),
+                        t=pageTitle.replace('|',''),
                         d=pageDesc.substring(0,250),
                         href;
                     
                     // append HTML for each network button
                     networks.forEach(function(item) {
                         href = helpers.networkDefs[item].url;
-                        href = href.replace('|u|',u).replace('|t|',t).replace('|d|',d).replace('|140|',t.substring(0,131)+' '+u);
+                        href = href.replace('|u|',u).replace('|t|',t).replace('|d|',d).replace('|140|',t.substring(0,130));
                         $("<a href='"+href+"' title='Share this page on "+item+"' class='pop share-"+theme+" share-"+theme+"-"+item+"'></a>").appendTo($element);
                     });
                     
@@ -94,9 +94,10 @@
         var helpers = {
             networkDefs: {
                 facebook:{url:'http://www.facebook.com/share.php?u=|u|'},
-                twitter:{url:'http://twitter.com/home?status=|140|'},
+                //http://twitter.com/home?status=jQuery%20Share%20Social%20Media%20Plugin%20-%20Share%20to%20multiple%20social%20networks%20from%20a%20single%20form%20http://plugins.in1.com/share/demo
+                twitter:{url:'https://twitter.com/share?via=in1.com&text=|140|'},
                 linkedin:{url:'http://www.linkedin.com/shareArticle?mini=true&url=|u|&title=|t|&summary=|d|&source=in1.com'},
-                in1:{url:'http://www.in1.com/cast?u=|u|'},
+                in1:{url:'http://www.in1.com/cast?u=|u|',w:'490',h:'529'},
                 tumblr:{url:'http://www.tumblr.com/share?v=3&u=|u|'},
                 digg:{url:'http://digg.com/submit?url=|u|&title=|t|'},
                 googleplus:{url:'https://plusone.google.com/_/+1/confirm?hl=en&url=|u|'},
