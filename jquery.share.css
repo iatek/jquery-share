@@ -1,4 +1,3 @@
-
 .share {
     
 }
@@ -18,12 +17,12 @@
     text-indent: -99999px;
     margin:2px;
     opacity: .9;
-    filter:Alpha(Opacity=9);
+    filter:Alpha(Opacity=90);
 }
 
 .share-icon:hover {
     opacity: 1;
-    filter:Alpha(Opacity=10);
+    filter:Alpha(Opacity=100);
 }
 
 .share-icon-digg {
