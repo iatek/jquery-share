@@ -29,23 +29,27 @@
                 
                 $.each($(document).find('meta[name="description"]'),function(idx,item){
                     pageDesc = $(item).attr("content");
-    			});
+        		});
                 
                 // each instance of this plugin
                 return this.each(function() {
                     var $element = $(this),
                         id=$element.attr("id"),
                         u=encodeURIComponent(pageUrl),
-                        t=pageTitle.replace('|',''),
+                        t=encodeURIComponent(pageTitle),
                         d=pageDesc.substring(0,250),
                         href;
-                    
+
                     // append HTML for each network button
-                    networks.forEach(function(item) {
+                    for (var item in networks) {
+                        item = networks[item];
                         href = helpers.networkDefs[item].url;
-                        href = href.replace('|u|',u).replace('|t|',t).replace('|d|',d).replace('|140|',t.substring(0,130));
-                        $("<a href='"+href+"' title='Share this page on "+item+"' class='pop share-"+theme+" share-"+theme+"-"+item+"'></a>").appendTo($element);
-                    });
+                        href = href.replace('|u|',u).replace('|t|',t).replace('|d|',d)
+                                   .replace('|140|',t.substring(0,130));
+                        $("<a href='"+href+"' title='Share this page on "+item+
+                            "' class='pop share-"+theme+" share-"+theme+"-"+item+"'></a>")
+                            .appendTo($element);
+                    }
                     
                     // customize css
                     $("#"+id+".share-"+theme).css('margin',margin);
@@ -95,7 +99,7 @@
             networkDefs: {
                 facebook:{url:'http://www.facebook.com/share.php?u=|u|'},
                 //http://twitter.com/home?status=jQuery%20Share%20Social%20Media%20Plugin%20-%20Share%20to%20multiple%20social%20networks%20from%20a%20single%20form%20http://plugins.in1.com/share/demo
-                twitter:{url:'https://twitter.com/share?via=in1.com&text=|140|'},
+                twitter:{url:'https://twitter.com/share?url=|u|&text=|140|'},
                 linkedin:{url:'http://www.linkedin.com/shareArticle?mini=true&url=|u|&title=|t|&summary=|d|&source=in1.com'},
                 in1:{url:'http://www.in1.com/cast?u=|u|',w:'490',h:'529'},
                 tumblr:{url:'http://www.tumblr.com/share?v=3&u=|u|'},
@@ -120,12 +124,12 @@
     }
 
     $.fn.share.defaults = {
-        networks: ['in1','facebook','twitter','linkedin'],
+        networks: ['facebook','twitter','linkedin'],
         theme: 'icon', // use round icons sprite
         autoShow: true,
         margin: '3px',
         orientation: 'horizontal',
-        useIn1: true
+        useIn1: false
     }
 
     $.fn.share.settings = {}
