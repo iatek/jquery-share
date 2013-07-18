@@ -25,6 +25,7 @@
                     margin = this.share.settings.margin,
                     pageTitle = this.share.settings.title||$(document).attr('title'),
                     pageUrl = this.share.settings.urlToShare||$(location).attr('href'),
+                    shareableObject = this.share.settings.shareableObject||'page',
                     pageDesc = "";
                 
                 $.each($(document).find('meta[name="description"]'),function(idx,item){
@@ -46,7 +47,7 @@
                         href = helpers.networkDefs[item].url;
                         href = href.replace('|u|',u).replace('|t|',t).replace('|d|',d)
                                    .replace('|140|',t.substring(0,130));
-                        $("<a href='"+href+"' title='Share this page on "+item+
+                        $("<a href='"+href+"' title='Share this " + shareableObject + " on "+item+
                             "' class='pop share-"+theme+" share-"+theme+"-"+item+"'></a>")
                             .appendTo($element);
                     }
