@@ -13,6 +13,22 @@ Features
     - Attractive buttons and multiple themes
     - Easy to implement with just a few lines of code
     
+Options
+================
+```jquery
+$('#shareable').share({
+  networks: ['facebook', 'twitter', 'linkedin', 'in1', 'tumblr', 'digg', 'googleplus', 'reddit', 'pinterest', 'posterous', 'stumbleupon', 'email']
+  theme: 'square' or 'icon',
+  orientation: 'vertical' or 'horizontal',
+  affix: 'top', or 'top left', or 'top center', or 'top right', or 'left center', or 'left bottom', or 'right center', or 'right bottom', or 'bottom left', or 'bottom center', or 'bottom right',
+  margin: 'margin between icons [default is 3px]',
+  title: 'text that is shared [default is page title]',
+  urlToShare: 'url that is shared [default is current page url]',
+  shareableObject: 'customize the title tag on the link [default is page]',
+  pageDesc:
+});
+```
+
 Examples
 ================
 
