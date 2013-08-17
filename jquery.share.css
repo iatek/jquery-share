@@ -73,7 +73,10 @@
 
 /**a.behance, a.delicious, a.deviantart, a.digg, a.dribbble, a.facebook, a.flickr, a.forrst, a.foursquare, a.googleplus, a.in1, a.instagram, a.lastfm, a.linkedin, a.pinterest, a.rss, a.skype, a.tumblr, a.twitter, a.vimeo, a.youtube {*/
 .share-square {
+    -webkit-transition: all 0.2s linear 0s;
     -moz-transition: all 0.2s linear 0s;
+    -o-transition: all 0.2s linear 0s;
+    transition: all 0.2s linear 0s;
     background: url("images/social-icons.png") no-repeat scroll left top transparent;
     display: inline-block;
     height: 32px;
