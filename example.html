@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery-Share</title>
+    <meta name="description" content="A jquery social plugin that enables easy sharing to multple social networks.">
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="jQuery-Share" />
+    <meta property="og:description" content="A jquery social plugin that enables easy sharing to multple social networks." />
+
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="jquery.share.css">
+    <style>
+      #share {
+        margin: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div id="share"></div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="jquery.share.js"></script>
+    <script>
+      $('#share').share({ 
+        networks: ['facebook', 'twitter', 'email'],
+        theme: 'square'
+      });
+    </script>
+  </body>
+</html>

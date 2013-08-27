@@ -46,9 +46,16 @@
                         href = helpers.networkDefs[item].url;
                         href = href.replace('|u|',u).replace('|t|',t).replace('|d|',d)
                                    .replace('|140|',t.substring(0,130));
-                        $("<a href='"+href+"' title='Share this page on "+item+
-                            "' class='pop share-"+theme+" share-"+theme+"-"+item+"'></a>")
-                            .appendTo($element);
+                        string = "<a href='"+href+"' title='Share this page via "+item+"' class='share-"+theme+" share-"+theme+"-"+item+"'></a>"
+                        
+                        if (item != 'email') { 
+                          $(string)
+                          .appendTo($element)
+                          .addClass('pop');
+                        } else {
+                          $(string)
+                          .appendTo($element);
+                        }
                     }
                     
                     // customize css
@@ -109,7 +116,7 @@
                 pinterest:{url:'http://pinterest.com/pin/create/button/?url=|u|&media=&description=|d|'},
                 posterous:{url:'http://posterous.com/share?linkto=|u|&title=|t|'},
                 stumbleupon:{url:'http://www.stumbleupon.com/submit?url=|u|&title=|t|'},
-                email:{url:'mailto:?subject=|t|'}
+                email:{url:'mailto:?subject=|t|&body=|u|'}
             }
         }
      
