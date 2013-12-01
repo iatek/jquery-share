@@ -5,6 +5,8 @@
  * @version 1.0
  * @license MIT license (http://opensource.org/licenses/mit-license.php)
  * ---
+ * 
+ * Addon : class social-media applied to img will share image url within Pinterest - Kendrick
  */
 
 ;(function ( $, window, undefined ) {
@@ -25,7 +27,10 @@
                     margin = this.share.settings.margin,
                     pageTitle = this.share.settings.title||$(document).attr('title'),
                     pageUrl = this.share.settings.urlToShare||$(location).attr('href'),
-                    pageDesc = "";
+                    pageDesc = "",
+                    mediaURL = $('.social-media').attr('src');
+                
+                if (mediaURL!=undefined) mediaURL = '//'+document.domain+mediaURL;
                 
                 $.each($(document).find('meta[name="description"]'),function(idx,item){
                     pageDesc = $(item).attr("content");
@@ -44,7 +49,7 @@
                     for (var item in networks) {
                         item = networks[item];
                         href = helpers.networkDefs[item].url;
-                        href = href.replace('|u|',u).replace('|t|',t).replace('|d|',d)
+                        href = href.replace('|m|',m).replace('|u|',u).replace('|t|',t).replace('|d|',d)
                                    .replace('|140|',t.substring(0,130));
                         $("<a href='"+href+"' title='Share this page on "+item+
                             "' class='pop share-"+theme+" share-"+theme+"-"+item+"'></a>")
@@ -106,7 +111,7 @@
                 digg:{url:'http://digg.com/submit?url=|u|&title=|t|'},
                 googleplus:{url:'https://plusone.google.com/_/+1/confirm?hl=en&url=|u|'},
                 reddit:{url:'http://reddit.com/submit?url=|u|'},
-                pinterest:{url:'http://pinterest.com/pin/create/button/?url=|u|&media=&description=|d|'},
+                pinterest:{url:'http://pinterest.com/pin/create/button/?url=|u|&media=|m|&description=|d|'},
                 posterous:{url:'http://posterous.com/share?linkto=|u|&title=|t|'},
                 stumbleupon:{url:'http://www.stumbleupon.com/submit?url=|u|&title=|t|'},
                 email:{url:'mailto:?subject=|t|'}
