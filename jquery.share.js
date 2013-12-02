@@ -43,6 +43,7 @@
                         u=encodeURIComponent(pageUrl),
                         t=encodeURIComponent(pageTitle),
                         d=pageDesc.substring(0,250),
+                        m=encodeURIComponent(mediaURL),
                         href;
 
                     // append HTML for each network button
