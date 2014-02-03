@@ -1,0 +1,23 @@
+<!doctype html>
+ <html> 
+	<head>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script type="text/javascript" src="jquery.share.js"></script>
+		<link rel="stylesheet" href="jquery.share.css" />
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#mydiv').share({
+					networks: ['facebook','pinterest','googleplus','twitter','linkedin','tumblr','in1','email','stumbleupon','digg'],
+					orientation : 'horizontal' /*vertical*/,
+					title : null /*update title if you dont' want to use the documents title*/,
+					urlToShare : null /*update urlToShare if you dont' want to use the documents location.href*/,
+					margin : '3px',
+					theme : 'icon' /*square*/,
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="mydiv"></div>
+	</body>
+</html>
